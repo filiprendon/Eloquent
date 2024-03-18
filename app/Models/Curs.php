@@ -5,24 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cicle extends Model
+class Curs extends Model
 {
     use HasFactory;
 
-    protected $table = 'cicles';
+    protected $table = 'cursos';
     // protected $primaryKey = 'id';
     // protected $incrementing = true;
     // protected $keyType;
     public $timestamps = false;
 
-
     /**
-     * Get all of the comments for the Cicle
+     * Get the cicle that owns the Curs
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function cursos()
+    public function cicle()
     {
-        return $this->hasMany(Curs::class, 'cicles_id');
+        return $this->belongsTo(Cicle::class, 'cicles_id');
     }
 }
